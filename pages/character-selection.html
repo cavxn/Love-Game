@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Characters - Cavin & Shivani 💕</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Character Selection Screen -->
+        <div id="character-selection-screen" class="screen">
+            <div class="character-selection-container">
+                <!-- Background -->
+                <div class="selection-bg">
+                    <div class="bg-decoration bg-star-1">⭐</div>
+                    <div class="bg-decoration bg-star-2">✨</div>
+                    <div class="bg-decoration bg-heart-1">💖</div>
+                    <div class="bg-decoration bg-heart-2">💕</div>
+                </div>
+                
+                <!-- Selection Content -->
+                <div class="selection-content">
+                    <h2 class="selection-title">Meet the Characters</h2>
+                    <p class="selection-subtitle">The two people who make this love story so special</p>
+                    
+                    <div class="character-cards">
+                        <div class="character-card" data-character="cavin">
+                            <div class="card-glow"></div>
+                            <div class="character-photo-wrapper cavin-photo">
+                                <img src="../images/cavin-photo.jpg" alt="Cavin" class="character-photo">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="character-name-card">Cavin</h3>
+                                <p class="character-description">The one who fell in love first 💕</p>
+                                <div class="card-btn">Learn More</div>
+                            </div>
+                            <div class="card-overlay"></div>
+                        </div>
+                        
+                        <div class="character-card" data-character="shivani">
+                            <div class="card-glow"></div>
+                            <div class="character-photo-wrapper shivani-photo">
+                                <img src="../images/shivani-photo.jpg" alt="Shivani" class="character-photo">
+                            </div>
+                            <div class="card-content">
+                                <h3 class="character-name-card">Shivani</h3>
+                                <p class="character-description">The one who made everything beautiful 🌺</p>
+                                <div class="card-btn">Learn More</div>
+                            </div>
+                            <div class="card-overlay"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="character-actions">
+                        <button id="view-timeline-btn" class="continue-button">
+                            View Our Love Timeline 📅
+                        </button>
+                        <button id="view-memories-btn" class="continue-button secondary">
+                            See Our Memories 📸
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Timeline button
+        document.getElementById('view-timeline-btn').addEventListener('click', function() {
+            window.location.href = 'timeline.html';
+        });
+
+        // Memories button
+        document.getElementById('view-memories-btn').addEventListener('click', function() {
+            window.location.href = 'memories.html';
+        });
+
+        // Simple click handler for Learn More buttons
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('card-btn')) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const card = e.target.closest('.character-card');
+                const character = card.getAttribute('data-character');
+                
+                console.log('Clicked Learn More for:', character);
+                
+                if (character === 'cavin') {
+                    window.location.href = 'biodata-cavin.html';
+                } else if (character === 'shivani') {
+                    window.location.href = 'biodata-shivani.html';
+                }
+            }
+        });
+
+        // Character card click handlers
+        document.querySelectorAll('.character-card').forEach(card => {
+            const character = card.getAttribute('data-character');
+            
+            // Add cursor pointer
+            card.style.cursor = 'pointer';
+            
+            // Card hover effects
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

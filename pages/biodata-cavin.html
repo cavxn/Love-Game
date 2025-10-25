@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavin's Biodata - Cavin & Shivani 💕</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="story.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Biodata Screen -->
+        <div id="biodata-screen" class="screen active">
+            <div class="biodata-container">
+                <div class="biodata-header">
+                    <h2 class="biodata-title">💕 Cavin's Complete Biodata 💕</h2>
+                    <a href="character-selection.html" class="biodata-back-btn">← Back to Characters</a>
+                </div>
+                
+                <div class="biodata-content" id="cavin-biodata-content">
+                    <!-- Biodata will be loaded here via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../character-story-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load Cavin's biodata
+            if (window.characterStoryData && window.characterStoryData.cavin) {
+                displayBiodata(window.characterStoryData.cavin.biodata, 'Cavin');
+            } else {
+                document.getElementById('cavin-biodata-content').innerHTML = 
+                    '<p style="text-align: center; padding: 20px;">Error loading biodata. Please check console.</p>';
+            }
+        });
+
+        function displayBiodata(biodata, characterName) {
+            const container = document.getElementById('cavin-biodata-content');
+            
+            let html = `
+                <!-- Profile Photo Section -->
+                <div class="profile-photo-section">
+                    <div class="profile-photo-wrapper">
+                        <img src="../images/cavin-profile.jpg" alt="Cavin" class="profile-photo">
+                    </div>
+                </div>
+
+                <!-- Personal Information Section -->
+                <div class="biodata-section">
+                    <h3 class="section-title">👤 Personal Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Full Name:</label>
+                            <span>${biodata.personalInfo.fullName || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Age:</label>
+                            <span>${biodata.personalInfo.age || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Birthday:</label>
+                            <span>${biodata.personalInfo.birthday || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Zodiac Sign:</label>
+                            <span>${biodata.personalInfo.zodiacSign || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Height:</label>
+                            <span>${biodata.personalInfo.height || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Occupation:</label>
+                            <span>${biodata.personalInfo.occupation || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Education:</label>
+                            <span>${biodata.personalInfo.education || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Location:</label>
+                            <span>${biodata.personalInfo.location || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Relationship Status:</label>
+                            <span>${biodata.personalInfo.relationshipStatus || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Phone:</label>
+                            <span>${biodata.personalInfo.phoneNumber || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Email:</label>
+                            <span>${biodata.personalInfo.email || 'Not provided'}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physical Appearance Section -->
+                <div class="biodata-section">
+                    <h3 class="section-title">👁️ Physical Appearance</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Eye Color:</label>
+                            <span>${biodata.physicalAppearance.eyeColor || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Hair Color:</label>
+                            <span>${biodata.physicalAppearance.hairColor || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Body Type:</label>
+                            <span>${biodata.physicalAppearance.bodyType || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Distinctive Features:</label>
+                            <span>${biodata.physicalAppearance.distinctiveFeatures || 'Not provided'}</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Style:</label>
+                            <span>${biodata.physicalAppearance.style || 'Not provided'}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personality Section -->
+                <div class="biodata-section">
+                    <h3 class="section-title">💫 Personality</h3>
+                    <div class="personality-grid">
+                        <div class="personality-item">
+                            <label>Traits:</label>
+                            <div class="tag-list">${formatList(biodata.personality.traits)}</div>
+                        </div>
+                        <div class="personality-item">
+                            <label>Strengths:</label>
+                            <div class="tag-list">${formatList(biodata.personality.strengths)}</div>
+                        </div>
+                        <div class="personality-item">
+                            <label>Quirks:</label>
+                            <div class="tag-list">${formatList(biodata.personality.quirks)}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests Section -->
+                <div class="biodata-section">
+                    <h3 class="section-title">🎯 Interests & Hobbies</h3>
+                    <div class="interests-grid">
+                        <div class="interest-item">
+                            <label>Hobbies:</label>
+                            <div class="tag-list">${formatList(biodata.interests.hobbies)}</div>
+                        </div>
+                        <div class="interest-item">
+                            <label>Favorite Music:</label>
+                            <div class="tag-list">${formatList(biodata.interests.favoriteMusic)}</div>
+                        </div>
+                        <div class="interest-item">
+                            <label>Favorite Movies:</label>
+                            <div class="tag-list">${formatList(biodata.interests.favoriteMovies)}</div>
+                        </div>
+                        <div class="interest-item">
+                            <label>Favorite Books:</label>
+                            <div class="tag-list">${formatList(biodata.interests.favoriteBooks)}</div>
+                        </div>
+                        <div class="interest-item">
+                            <label>Favorite Foods:</label>
+                            <div class="tag-list">${formatList(biodata.interests.favoriteFoods)}</div>
+                        </div>
+                        <div class="interest-item">
+                            <label>Favorite Colors:</label>
+                            <div class="tag-list">${formatList(biodata.interests.favoriteColors)}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Relationship Section -->
+                <div class="biodata-section">
+                    <h3 class="section-title">💕 Relationship</h3>
+                    <div class="relationship-grid">
+                        <div class="relationship-item">
+                            <label>Love Language:</label>
+                            <p>${biodata.relationship.loveLanguage || 'Not provided'}</p>
+                        </div>
+                        <div class="relationship-item">
+                            <label>Ideal Date:</label>
+                            <p>${biodata.relationship.idealDate || 'Not provided'}</p>
+                        </div>
+                        <div class="relationship-item">
+                            <label>What I Love About Shivani:</label>
+                            <p>${biodata.relationship.whatILoveAboutShivani || 'Not provided'}</p>
+                        </div>
+                        <div class="relationship-item">
+                            <label>Favorite Memory:</label>
+                            <p>${biodata.relationship.favoriteMemory || 'Not provided'}</p>
+                        </div>
+                        <div class="relationship-item">
+                            <label>Future Plans:</label>
+                            <p>${biodata.relationship.futurePlans || 'Not provided'}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fun Facts Section -->
+                <div class="biodata-section">
+                    <h3 class="section-title">🎉 Fun Facts</h3>
+                    <div class="fun-facts-item">
+                        <div class="tag-list">${formatList(biodata.funFacts)}</div>
+                    </div>
+                </div>
+
+                <!-- Quotes Section -->
+                <div class="biodata-section">
+                    <h3 class="section-title">💬 Quotes & Motto</h3>
+                    <div class="quotes-grid">
+                        <div class="quote-item">
+                            <label>Favorite Quote:</label>
+                            <p class="quote-text">${biodata.quotes.favoriteQuote || 'Not provided'}</p>
+                        </div>
+                        <div class="quote-item">
+                            <label>Life Motto:</label>
+                            <p class="quote-text">${biodata.quotes.lifeMotto || 'Not provided'}</p>
+                        </div>
+                        <div class="quote-item">
+                            <label>Relationship Quote:</label>
+                            <p class="quote-text">${biodata.quotes.relationshipQuote || 'Not provided'}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        function formatList(items) {
+            if (!items || !Array.isArray(items)) return '';
+            return items.map(item => `<span class="tag">${item}</span>`).join('');
+        }
+    </script>
+    <style>
+        body {
+            background: #0a0a1a !important;
+            color: #fff !important;
+        }
+
+        .biodata-container {
+            background: linear-gradient(135deg, #0a1a2e 0%, #16213e 50%, #0a1a2e 100%);
+            border: 2px solid #00d9ff;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.4);
+        }
+
+        .biodata-header {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2) 0%, rgba(100, 149, 237, 0.2) 100%);
+            border-bottom: 2px solid #00d9ff;
+            padding: 20px;
+        }
+
+        .biodata-title {
+            color: #87ceeb !important;
+            text-shadow: 0 0 25px rgba(135, 206, 235, 0.6);
+        }
+
+        .section-title {
+            color: #00d9ff !important;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            border-bottom: 2px solid #00d9ff;
+            padding-bottom: 10px;
+        }
+
+        .biodata-section {
+            background: rgba(10, 26, 46, 0.7);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .info-item {
+            background: rgba(22, 33, 62, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: rgba(0, 217, 255, 0.15);
+            border-color: #00d9ff;
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .info-item label {
+            color: #87ceeb !important;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-item span, .relationship-item p, .lifestyle-item p {
+            color: #fff !important;
+            font-weight: 500;
+        }
+
+        .relationship-item, .lifestyle-item {
+            background: rgba(22, 33, 62, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .relationship-item label, .lifestyle-item label {
+            color: #87ceeb !important;
+            font-weight: 600;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #0099ff 0%, #00d9ff 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 217, 255, 0.5);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 217, 255, 0.7);
+        }
+
+        .quote-text {
+            font-style: italic;
+            color: #87ceeb !important;
+            font-size: 17px;
+            line-height: 1.8;
+            background: rgba(0, 217, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00d9ff;
+        }
+
+        .quote-item {
+            background: rgba(22, 33, 62, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .quote-item label {
+            color: #87ceeb !important;
+            font-weight: 600;
+        }
+
+        .biodata-back-btn {
+            background: linear-gradient(135deg, #0099ff 0%, #00d9ff 100%);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 5px 25px rgba(0, 217, 255, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .biodata-back-btn:hover {
+            transform: translateX(-5px) scale(1.05);
+            box-shadow: 0 8px 35px rgba(0, 217, 255, 0.7);
+        }
+
+        .personality-item, .interest-item {
+            background: rgba(22, 33, 62, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .personality-item label, .interest-item label {
+            color: #87ceeb !important;
+            font-weight: 600;
+        }
+
+        .fun-facts-item {
+            background: rgba(22, 33, 62, 0.6);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .profile-photo-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 30px;
+        }
+
+        .profile-photo-wrapper {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0099ff 0%, #00d9ff 100%);
+            padding: 8px;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.6), 0 0 80px rgba(0, 217, 255, 0.4);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(0, 217, 255, 0.6), 0 0 80px rgba(0, 217, 255, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(0, 217, 255, 0.8), 0 0 100px rgba(0, 217, 255, 0.6);
+            }
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</body>
+</html>

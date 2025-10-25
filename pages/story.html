@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story - Cavin & Shivani 💫</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="story.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Main Story Screen -->
+        <div id="story-screen" class="screen active">
+            <div id="background-layer">
+                <canvas id="backgroundCanvas"></canvas>
+            </div>
+            
+            <!-- Small Header Section -->
+            <div class="story-header">
+                <div class="header-chapter-info">
+                    <h1 class="header-chapter-title">Month 1 - The Message That Changed Everything</h1>
+                    <p class="header-chapter-subtitle">When You Found Me</p>
+                </div>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="story-content-area">
+                <!-- Left Side - Character Info -->
+                <div class="character-info-panel">
+                    <h2 class="character-name-large">Shivani</h2>
+                    <p class="character-description">The Beautiful One who captured my heart with just a message. Her smile could light up the darkest days, and her laugh became the melody of my life.</p>
+                    
+                    <!-- Transparent Image -->
+                    <div class="transparent-image-container">
+                        <img src="../shivani-transparent.jpg" alt="Shivani" class="transparent-image">
+                    </div>
+                </div>
+                
+                <!-- Right Side - Story Content -->
+                <div class="story-panel">
+                    <div id="story-content">
+                        <!-- Dialog Box -->
+                        <div id="dialog-box">
+                            <div id="speaker-name">Shivani</div>
+                            <div id="dialog-text">I was scrolling through profiles, not really expecting anything special. Then I saw your message... and something in my heart skipped a beat.</div>
+                            <div id="dialog-emoji">💫</div>
+                            <button id="next-dialog-btn" class="next-btn">Continue Story ➤</button>
+                        </div>
+
+                        <!-- Choices Container -->
+                        <div id="choices-container"></div>
+
+                        <!-- Heart Points Display -->
+                        <div id="heart-points-display">
+                            <span id="heart-count">💖 0</span>
+                        </div>
+
+                        <!-- Biodata Button -->
+                        <div id="biodata-access">
+                            <button id="biodata-btn" class="biodata-access-btn">📋 Learn More About Cavin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Memory Unlock Notification -->
+            <div id="memory-notification" class="hidden">
+                <div class="memory-popup">
+                    <span id="memory-icon">✨</span>
+                    <p id="memory-text">Memory Unlocked!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini-Game Screen -->
+        <div id="minigame-screen" class="screen">
+            <div id="minigame-content">
+                <h2 id="minigame-title"></h2>
+                <div id="minigame-area"></div>
+                <div id="minigame-hint"></div>
+            </div>
+        </div>
+
+        <!-- Memory Gallery -->
+        <div id="gallery-screen" class="screen">
+            <div class="gallery-container">
+                <h2 class="gallery-title">💕 Our Memory Gallery 💕</h2>
+                <div id="memory-gallery-grid"></div>
+                <button id="back-from-gallery-btn" class="gallery-btn">Continue Story</button>
+            </div>
+        </div>
+
+        <!-- Biodata Screen -->
+        <div id="biodata-screen" class="screen">
+            <div class="biodata-container">
+                <div class="biodata-header">
+                    <h2 class="biodata-title">💕 Cavin's Complete Biodata 💕</h2>
+                    <button id="back-from-biodata-btn" class="biodata-back-btn">← Back to Story</button>
+                </div>
+                
+                <div class="biodata-content">
+                    <!-- Personal Information Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">👤 Personal Information</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Full Name:</label>
+                                <input type="text" id="fullName" placeholder="Enter your full name">
+                            </div>
+                            <div class="info-item">
+                                <label>Age:</label>
+                                <input type="text" id="age" placeholder="Your age">
+                            </div>
+                            <div class="info-item">
+                                <label>Birthday:</label>
+                                <input type="text" id="birthday" placeholder="Your birthday">
+                            </div>
+                            <div class="info-item">
+                                <label>Zodiac Sign:</label>
+                                <input type="text" id="zodiacSign" placeholder="Your zodiac sign">
+                            </div>
+                            <div class="info-item">
+                                <label>Height:</label>
+                                <input type="text" id="height" placeholder="Your height">
+                            </div>
+                            <div class="info-item">
+                                <label>Occupation:</label>
+                                <input type="text" id="occupation" placeholder="Your job/profession">
+                            </div>
+                            <div class="info-item">
+                                <label>Education:</label>
+                                <input type="text" id="education" placeholder="Your education">
+                            </div>
+                            <div class="info-item">
+                                <label>Location:</label>
+                                <input type="text" id="location" placeholder="Your city, country">
+                            </div>
+                            <div class="info-item">
+                                <label>Phone:</label>
+                                <input type="text" id="phoneNumber" placeholder="Your phone number">
+                            </div>
+                            <div class="info-item">
+                                <label>Email:</label>
+                                <input type="text" id="email" placeholder="Your email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Physical Appearance Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">👁️ Physical Appearance</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Eye Color:</label>
+                                <input type="text" id="eyeColor" placeholder="Your eye color">
+                            </div>
+                            <div class="info-item">
+                                <label>Hair Color:</label>
+                                <input type="text" id="hairColor" placeholder="Your hair color">
+                            </div>
+                            <div class="info-item">
+                                <label>Body Type:</label>
+                                <input type="text" id="bodyType" placeholder="Your body type">
+                            </div>
+                            <div class="info-item">
+                                <label>Distinctive Features:</label>
+                                <input type="text" id="distinctiveFeatures" placeholder="Your special features">
+                            </div>
+                            <div class="info-item">
+                                <label>Style:</label>
+                                <input type="text" id="style" placeholder="Your fashion style">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personality Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">💫 Personality</h3>
+                        <div class="personality-grid">
+                            <div class="personality-item">
+                                <label>Traits:</label>
+                                <textarea id="traits" placeholder="List your personality traits (comma separated)"></textarea>
+                            </div>
+                            <div class="personality-item">
+                                <label>Strengths:</label>
+                                <textarea id="strengths" placeholder="List your strengths (comma separated)"></textarea>
+                            </div>
+                            <div class="personality-item">
+                                <label>Quirks:</label>
+                                <textarea id="quirks" placeholder="List your quirks (comma separated)"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interests Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">🎯 Interests & Hobbies</h3>
+                        <div class="interests-grid">
+                            <div class="interest-item">
+                                <label>Hobbies:</label>
+                                <textarea id="hobbies" placeholder="List your hobbies (comma separated)"></textarea>
+                            </div>
+                            <div class="interest-item">
+                                <label>Favorite Music:</label>
+                                <textarea id="favoriteMusic" placeholder="List your favorite music genres (comma separated)"></textarea>
+                            </div>
+                            <div class="interest-item">
+                                <label>Favorite Movies:</label>
+                                <textarea id="favoriteMovies" placeholder="List your favorite movie types (comma separated)"></textarea>
+                            </div>
+                            <div class="interest-item">
+                                <label>Favorite Books:</label>
+                                <textarea id="favoriteBooks" placeholder="List your favorite book types (comma separated)"></textarea>
+                            </div>
+                            <div class="interest-item">
+                                <label>Favorite Foods:</label>
+                                <textarea id="favoriteFoods" placeholder="List your favorite foods (comma separated)"></textarea>
+                            </div>
+                            <div class="interest-item">
+                                <label>Favorite Colors:</label>
+                                <textarea id="favoriteColors" placeholder="List your favorite colors (comma separated)"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lifestyle Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">🌅 Lifestyle</h3>
+                        <div class="lifestyle-grid">
+                            <div class="lifestyle-item">
+                                <label>Daily Routine:</label>
+                                <textarea id="dailyRoutine" placeholder="Describe your daily routine"></textarea>
+                            </div>
+                            <div class="lifestyle-item">
+                                <label>Weekend Activities:</label>
+                                <textarea id="weekendActivities" placeholder="What do you do on weekends?"></textarea>
+                            </div>
+                            <div class="lifestyle-item">
+                                <label>Travel Preferences:</label>
+                                <textarea id="travelPreferences" placeholder="Where do you like to travel?"></textarea>
+                            </div>
+                            <div class="lifestyle-item">
+                                <label>Goals:</label>
+                                <textarea id="goals" placeholder="What are your life goals?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Relationship Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">💕 Relationship</h3>
+                        <div class="relationship-grid">
+                            <div class="relationship-item">
+                                <label>Love Language:</label>
+                                <input type="text" id="loveLanguage" placeholder="Your love language">
+                            </div>
+                            <div class="relationship-item">
+                                <label>Ideal Date:</label>
+                                <textarea id="idealDate" placeholder="Describe your ideal date"></textarea>
+                            </div>
+                            <div class="relationship-item">
+                                <label>What I Love About Shivani:</label>
+                                <textarea id="whatILoveAboutShivani" placeholder="What do you love about Shivani?"></textarea>
+                            </div>
+                            <div class="relationship-item">
+                                <label>Favorite Memory:</label>
+                                <textarea id="favoriteMemory" placeholder="Your favorite memory with Shivani"></textarea>
+                            </div>
+                            <div class="relationship-item">
+                                <label>Future Plans:</label>
+                                <textarea id="futurePlans" placeholder="Your future plans together"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Images Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">📸 Photo Gallery</h3>
+                        <div class="images-grid">
+                            <div class="image-upload-item">
+                                <label>Profile Photo:</label>
+                                <div class="image-upload-area" data-type="profilePhoto">
+                                    <input type="file" accept="image/*" class="image-input">
+                                    <div class="upload-placeholder">📷 Upload Profile Photo</div>
+                                    <img class="uploaded-image" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="image-upload-item">
+                                <label>Childhood Photo:</label>
+                                <div class="image-upload-area" data-type="childhoodPhoto">
+                                    <input type="file" accept="image/*" class="image-input">
+                                    <div class="upload-placeholder">👶 Upload Childhood Photo</div>
+                                    <img class="uploaded-image" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="image-upload-item">
+                                <label>Graduation Photo:</label>
+                                <div class="image-upload-area" data-type="graduationPhoto">
+                                    <input type="file" accept="image/*" class="image-input">
+                                    <div class="upload-placeholder">🎓 Upload Graduation Photo</div>
+                                    <img class="uploaded-image" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="image-upload-item">
+                                <label>Family Photo:</label>
+                                <div class="image-upload-area" data-type="familyPhoto">
+                                    <input type="file" accept="image/*" class="image-input">
+                                    <div class="upload-placeholder">👨‍👩‍👧‍👦 Upload Family Photo</div>
+                                    <img class="uploaded-image" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="image-upload-item">
+                                <label>Hobby Photo:</label>
+                                <div class="image-upload-area" data-type="hobbyPhoto">
+                                    <input type="file" accept="image/*" class="image-input">
+                                    <div class="upload-placeholder">🎨 Upload Hobby Photo</div>
+                                    <img class="uploaded-image" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="image-upload-item">
+                                <label>Travel Photo:</label>
+                                <div class="image-upload-area" data-type="travelPhoto">
+                                    <input type="file" accept="image/*" class="image-input">
+                                    <div class="upload-placeholder">✈️ Upload Travel Photo</div>
+                                    <img class="uploaded-image" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="image-upload-item">
+                                <label>Couple Photo:</label>
+                                <div class="image-upload-area" data-type="couplePhoto">
+                                    <input type="file" accept="image/*" class="image-input">
+                                    <div class="upload-placeholder">💕 Upload Couple Photo</div>
+                                    <img class="uploaded-image" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="image-upload-item">
+                                <label>Future Goals Photo:</label>
+                                <div class="image-upload-area" data-type="futurePhoto">
+                                    <input type="file" accept="image/*" class="image-input">
+                                    <div class="upload-placeholder">🌟 Upload Future Goals Photo</div>
+                                    <img class="uploaded-image" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fun Facts Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">🎉 Fun Facts</h3>
+                        <div class="fun-facts-item">
+                            <label>Fun Facts About Me:</label>
+                            <textarea id="funFacts" placeholder="List fun facts about yourself (one per line)"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Quotes Section -->
+                    <div class="biodata-section">
+                        <h3 class="section-title">💬 Quotes & Motto</h3>
+                        <div class="quotes-grid">
+                            <div class="quote-item">
+                                <label>Favorite Quote:</label>
+                                <textarea id="favoriteQuote" placeholder="Your favorite quote"></textarea>
+                            </div>
+                            <div class="quote-item">
+                                <label>Life Motto:</label>
+                                <textarea id="lifeMotto" placeholder="Your life motto"></textarea>
+                            </div>
+                            <div class="quote-item">
+                                <label>Relationship Quote:</label>
+                                <textarea id="relationshipQuote" placeholder="Your relationship quote"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="biodata-actions">
+                        <button id="save-biodata-btn" class="save-btn">💾 Save Biodata</button>
+                        <button id="load-biodata-btn" class="load-btn">📂 Load Biodata</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Scene -->
+        <div id="final-screen" class="screen">
+            <div class="final-content">
+                <div id="final-message"></div>
+                <button id="play-again-btn" class="final-btn">Relive Our Story 💖</button>
+            </div>
+            <canvas id="final-canvas"></canvas>
+        </div>
+
+        <!-- Volume Control -->
+        <button id="volume-btn" class="volume-btn">🔊</button>
+    </div>
+
+    <script src="../character-story-data.js"></script>
+    <script src="../character-story.js"></script>
+    <script src="../scroll-effect.js"></script>
+    <script>
+        // Biodata functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if biodata parameter is in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            let biodataCharacter = urlParams.get('biodata');
+            
+            // Handle legacy 'true' value
+            if (biodataCharacter === 'true') {
+                biodataCharacter = 'cavin'; // Default to cavin if it's just 'true'
+            }
+            
+            console.log('URL params:', window.location.search);
+            console.log('Biodata character:', biodataCharacter);
+            
+            // Biodata navigation
+            const biodataBtn = document.getElementById('biodata-btn');
+            const backFromBiodataBtn = document.getElementById('back-from-biodata-btn');
+            const saveBiodataBtn = document.getElementById('save-biodata-btn');
+            const loadBiodataBtn = document.getElementById('load-biodata-btn');
+
+            if (biodataBtn) {
+                biodataBtn.addEventListener('click', function() {
+                    console.log('Biodata button clicked');
+                    showBiodataScreen();
+                });
+            }
+
+            if (backFromBiodataBtn) {
+                backFromBiodataBtn.addEventListener('click', function() {
+                    hideBiodataScreen();
+                });
+            }
+
+            if (saveBiodataBtn) {
+                saveBiodataBtn.addEventListener('click', function() {
+                    saveBiodata();
+                });
+            }
+
+            if (loadBiodataBtn) {
+                loadBiodataBtn.addEventListener('click', function() {
+                    loadBiodata();
+                });
+            }
+
+            // Image upload functionality
+            setupImageUploads();
+
+            // Load existing biodata if available
+            loadBiodata();
+            
+            // Update biodata button label based on character
+            if (biodataCharacter === 'cavin' || biodataCharacter === 'shivani') {
+                const biodataBtn = document.getElementById('biodata-btn');
+                if (biodataBtn) {
+                    const name = biodataCharacter.charAt(0).toUpperCase() + biodataCharacter.slice(1);
+                    biodataBtn.textContent = `📋 Learn More About ${name}`;
+                }
+            }
+
+            // If biodata parameter is present, show biodata screen
+            if (biodataCharacter === 'cavin' || biodataCharacter === 'shivani') {
+                console.log('Showing biodata screen for:', biodataCharacter);
+                setTimeout(() => {
+                    showBiodataScreen(biodataCharacter);
+                }, 500); // Increased timeout to ensure page is fully loaded
+            }
+        });
+
+        function showBiodataScreen(character = 'cavin') {
+            console.log('showBiodataScreen called for:', character);
+            const biodataScreen = document.getElementById('biodata-screen');
+            const storyScreen = document.getElementById('story-screen');
+            
+            if (biodataScreen && storyScreen) {
+                console.log('Elements found, showing biodata screen');
+                
+                // Update biodata title and button based on character
+                const biodataTitle = document.querySelector('.biodata-title');
+                const biodataBtn = document.getElementById('biodata-btn');
+                
+                if (biodataTitle) {
+                    const name = character.charAt(0).toUpperCase() + character.slice(1);
+                    biodataTitle.textContent = `💕 ${name}'s Complete Biodata 💕`;
+                }
+                
+                if (biodataBtn) {
+                    const name = character.charAt(0).toUpperCase() + character.slice(1);
+                    biodataBtn.textContent = `📋 Learn More About ${name}`;
+                }
+                
+                // Update relationship label based on character
+                const relationshipLabel = document.querySelector('label[for="whatILoveAboutShivani"], .relationship-item label');
+                if (relationshipLabel && relationshipLabel.textContent.includes('What I Love About')) {
+                    const lovedOneName = character === 'cavin' ? 'Shivani' : 'Cavin';
+                    relationshipLabel.textContent = `What I Love About ${lovedOneName}:`;
+                    const textarea = document.getElementById('whatILoveAboutShivani');
+                    if (textarea) {
+                        textarea.placeholder = `What do you love about ${lovedOneName}?`;
+                    }
+                }
+                
+                // Load character-specific biodata
+                loadCharacterBiodata(character);
+                
+                biodataScreen.classList.add('active');
+                storyScreen.classList.remove('active');
+                
+                // Also hide any other screens that might be showing
+                document.querySelectorAll('.screen').forEach(screen => {
+                    if (screen.id !== 'biodata-screen') {
+                        screen.classList.remove('active');
+                    }
+                });
+            } else {
+                console.error('Biodata or story screen not found');
+            }
+        }
+
+        function hideBiodataScreen() {
+            console.log('hideBiodataScreen called');
+            const biodataScreen = document.getElementById('biodata-screen');
+            const storyScreen = document.getElementById('story-screen');
+            
+            if (biodataScreen && storyScreen) {
+                biodataScreen.classList.remove('active');
+                storyScreen.classList.add('active');
+            }
+        }
+
+        function saveBiodata() {
+            const biodata = {
+                personalInfo: {
+                    fullName: document.getElementById('fullName').value,
+                    age: document.getElementById('age').value,
+                    birthday: document.getElementById('birthday').value,
+                    zodiacSign: document.getElementById('zodiacSign').value,
+                    height: document.getElementById('height').value,
+                    occupation: document.getElementById('occupation').value,
+                    education: document.getElementById('education').value,
+                    location: document.getElementById('location').value,
+                    phoneNumber: document.getElementById('phoneNumber').value,
+                    email: document.getElementById('email').value
+                },
+                physicalAppearance: {
+                    eyeColor: document.getElementById('eyeColor').value,
+                    hairColor: document.getElementById('hairColor').value,
+                    bodyType: document.getElementById('bodyType').value,
+                    distinctiveFeatures: document.getElementById('distinctiveFeatures').value,
+                    style: document.getElementById('style').value
+                },
+                personality: {
+                    traits: document.getElementById('traits').value.split(',').map(s => s.trim()).filter(s => s),
+                    strengths: document.getElementById('strengths').value.split(',').map(s => s.trim()).filter(s => s),
+                    quirks: document.getElementById('quirks').value.split(',').map(s => s.trim()).filter(s => s)
+                },
+                interests: {
+                    hobbies: document.getElementById('hobbies').value.split(',').map(s => s.trim()).filter(s => s),
+                    favoriteMusic: document.getElementById('favoriteMusic').value.split(',').map(s => s.trim()).filter(s => s),
+                    favoriteMovies: document.getElementById('favoriteMovies').value.split(',').map(s => s.trim()).filter(s => s),
+                    favoriteBooks: document.getElementById('favoriteBooks').value.split(',').map(s => s.trim()).filter(s => s),
+                    favoriteFoods: document.getElementById('favoriteFoods').value.split(',').map(s => s.trim()).filter(s => s),
+                    favoriteColors: document.getElementById('favoriteColors').value.split(',').map(s => s.trim()).filter(s => s)
+                },
+                lifestyle: {
+                    dailyRoutine: document.getElementById('dailyRoutine').value,
+                    weekendActivities: document.getElementById('weekendActivities').value,
+                    travelPreferences: document.getElementById('travelPreferences').value,
+                    goals: document.getElementById('goals').value
+                },
+                relationship: {
+                    loveLanguage: document.getElementById('loveLanguage').value,
+                    idealDate: document.getElementById('idealDate').value,
+                    whatILoveAboutShivani: document.getElementById('whatILoveAboutShivani').value,
+                    favoriteMemory: document.getElementById('favoriteMemory').value,
+                    futurePlans: document.getElementById('futurePlans').value
+                },
+                funFacts: document.getElementById('funFacts').value.split('\n').map(s => s.trim()).filter(s => s),
+                quotes: {
+                    favoriteQuote: document.getElementById('favoriteQuote').value,
+                    lifeMotto: document.getElementById('lifeMotto').value,
+                    relationshipQuote: document.getElementById('relationshipQuote').value
+                }
+            };
+
+            localStorage.setItem('cavinBiodata', JSON.stringify(biodata));
+            alert('Biodata saved successfully! 💾');
+        }
+
+        function loadCharacterBiodata(character) {
+            console.log('Loading biodata for:', character);
+            
+            // Get biodata from character story data
+            if (window.characterStoryData && window.characterStoryData[character] && window.characterStoryData[character].biodata) {
+                const biodata = window.characterStoryData[character].biodata;
+                
+                // Load personal info
+                if (biodata.personalInfo) {
+                    document.getElementById('fullName').value = biodata.personalInfo.fullName || '';
+                    document.getElementById('age').value = biodata.personalInfo.age || '';
+                    document.getElementById('birthday').value = biodata.personalInfo.birthday || '';
+                    document.getElementById('zodiacSign').value = biodata.personalInfo.zodiacSign || '';
+                    document.getElementById('height').value = biodata.personalInfo.height || '';
+                    document.getElementById('occupation').value = biodata.personalInfo.occupation || '';
+                    document.getElementById('education').value = biodata.personalInfo.education || '';
+                    document.getElementById('location').value = biodata.personalInfo.location || '';
+                    document.getElementById('phoneNumber').value = biodata.personalInfo.phoneNumber || '';
+                    document.getElementById('email').value = biodata.personalInfo.email || '';
+                }
+
+                // Load physical appearance
+                if (biodata.physicalAppearance) {
+                    document.getElementById('eyeColor').value = biodata.physicalAppearance.eyeColor || '';
+                    document.getElementById('hairColor').value = biodata.physicalAppearance.hairColor || '';
+                    document.getElementById('bodyType').value = biodata.physicalAppearance.bodyType || '';
+                    document.getElementById('distinctiveFeatures').value = biodata.physicalAppearance.distinctiveFeatures || '';
+                    document.getElementById('style').value = biodata.physicalAppearance.style || '';
+                }
+
+                // Load personality
+                if (biodata.personality) {
+                    document.getElementById('traits').value = biodata.personality.traits ? biodata.personality.traits.join(', ') : '';
+                    document.getElementById('strengths').value = biodata.personality.strengths ? biodata.personality.strengths.join(', ') : '';
+                    document.getElementById('quirks').value = biodata.personality.quirks ? biodata.personality.quirks.join(', ') : '';
+                }
+
+                // Load interests
+                if (biodata.interests) {
+                    document.getElementById('hobbies').value = biodata.interests.hobbies ? biodata.interests.hobbies.join(', ') : '';
+                    document.getElementById('favoriteMusic').value = biodata.interests.favoriteMusic ? biodata.interests.favoriteMusic.join(', ') : '';
+                    document.getElementById('favoriteMovies').value = biodata.interests.favoriteMovies ? biodata.interests.favoriteMovies.join(', ') : '';
+                    document.getElementById('favoriteBooks').value = biodata.interests.favoriteBooks ? biodata.interests.favoriteBooks.join(', ') : '';
+                    document.getElementById('favoriteFoods').value = biodata.interests.favoriteFoods ? biodata.interests.favoriteFoods.join(', ') : '';
+                    document.getElementById('favoriteColors').value = biodata.interests.favoriteColors ? biodata.interests.favoriteColors.join(', ') : '';
+                }
+
+                // Load lifestyle
+                if (biodata.lifestyle) {
+                    document.getElementById('dailyRoutine').value = biodata.lifestyle.dailyRoutine || '';
+                    document.getElementById('weekendActivities').value = biodata.lifestyle.weekendActivities || '';
+                    document.getElementById('travelPreferences').value = biodata.lifestyle.travelPreferences || '';
+                    document.getElementById('goals').value = biodata.lifestyle.goals || '';
+                }
+
+                // Load relationship
+                if (biodata.relationship) {
+                    document.getElementById('loveLanguage').value = biodata.relationship.loveLanguage || '';
+                    document.getElementById('idealDate').value = biodata.relationship.idealDate || '';
+                    if (character === 'cavin') {
+                        document.getElementById('whatILoveAboutShivani').value = biodata.relationship.whatILoveAboutShivani || '';
+                    } else if (character === 'shivani') {
+                        document.getElementById('whatILoveAboutShivani').value = biodata.relationship.whatILoveAboutCavin || '';
+                    }
+                    document.getElementById('favoriteMemory').value = biodata.relationship.favoriteMemory || '';
+                    document.getElementById('futurePlans').value = biodata.relationship.futurePlans || '';
+                }
+
+                // Load fun facts
+                if (biodata.funFacts) {
+                    document.getElementById('funFacts').value = biodata.funFacts.join('\n');
+                }
+
+                // Load quotes
+                if (biodata.quotes) {
+                    document.getElementById('favoriteQuote').value = biodata.quotes.favoriteQuote || '';
+                    document.getElementById('lifeMotto').value = biodata.quotes.lifeMotto || '';
+                    document.getElementById('relationshipQuote').value = biodata.quotes.relationshipQuote || '';
+                }
+            }
+        }
+
+        function loadBiodata() {
+            const savedBiodata = localStorage.getItem('cavinBiodata');
+            if (savedBiodata) {
+                const biodata = JSON.parse(savedBiodata);
+                
+                // Load personal info
+                if (biodata.personalInfo) {
+                    document.getElementById('fullName').value = biodata.personalInfo.fullName || '';
+                    document.getElementById('age').value = biodata.personalInfo.age || '';
+                    document.getElementById('birthday').value = biodata.personalInfo.birthday || '';
+                    document.getElementById('zodiacSign').value = biodata.personalInfo.zodiacSign || '';
+                    document.getElementById('height').value = biodata.personalInfo.height || '';
+                    document.getElementById('occupation').value = biodata.personalInfo.occupation || '';
+                    document.getElementById('education').value = biodata.personalInfo.education || '';
+                    document.getElementById('location').value = biodata.personalInfo.location || '';
+                    document.getElementById('phoneNumber').value = biodata.personalInfo.phoneNumber || '';
+                    document.getElementById('email').value = biodata.personalInfo.email || '';
+                }
+
+                // Load physical appearance
+                if (biodata.physicalAppearance) {
+                    document.getElementById('eyeColor').value = biodata.physicalAppearance.eyeColor || '';
+                    document.getElementById('hairColor').value = biodata.physicalAppearance.hairColor || '';
+                    document.getElementById('bodyType').value = biodata.physicalAppearance.bodyType || '';
+                    document.getElementById('distinctiveFeatures').value = biodata.physicalAppearance.distinctiveFeatures || '';
+                    document.getElementById('style').value = biodata.physicalAppearance.style || '';
+                }
+
+                // Load personality
+                if (biodata.personality) {
+                    document.getElementById('traits').value = biodata.personality.traits ? biodata.personality.traits.join(', ') : '';
+                    document.getElementById('strengths').value = biodata.personality.strengths ? biodata.personality.strengths.join(', ') : '';
+                    document.getElementById('quirks').value = biodata.personality.quirks ? biodata.personality.quirks.join(', ') : '';
+                }
+
+                // Load interests
+                if (biodata.interests) {
+                    document.getElementById('hobbies').value = biodata.interests.hobbies ? biodata.interests.hobbies.join(', ') : '';
+                    document.getElementById('favoriteMusic').value = biodata.interests.favoriteMusic ? biodata.interests.favoriteMusic.join(', ') : '';
+                    document.getElementById('favoriteMovies').value = biodata.interests.favoriteMovies ? biodata.interests.favoriteMovies.join(', ') : '';
+                    document.getElementById('favoriteBooks').value = biodata.interests.favoriteBooks ? biodata.interests.favoriteBooks.join(', ') : '';
+                    document.getElementById('favoriteFoods').value = biodata.interests.favoriteFoods ? biodata.interests.favoriteFoods.join(', ') : '';
+                    document.getElementById('favoriteColors').value = biodata.interests.favoriteColors ? biodata.interests.favoriteColors.join(', ') : '';
+                }
+
+                // Load lifestyle
+                if (biodata.lifestyle) {
+                    document.getElementById('dailyRoutine').value = biodata.lifestyle.dailyRoutine || '';
+                    document.getElementById('weekendActivities').value = biodata.lifestyle.weekendActivities || '';
+                    document.getElementById('travelPreferences').value = biodata.lifestyle.travelPreferences || '';
+                    document.getElementById('goals').value = biodata.lifestyle.goals || '';
+                }
+
+                // Load relationship
+                if (biodata.relationship) {
+                    document.getElementById('loveLanguage').value = biodata.relationship.loveLanguage || '';
+                    document.getElementById('idealDate').value = biodata.relationship.idealDate || '';
+                    document.getElementById('whatILoveAboutShivani').value = biodata.relationship.whatILoveAboutShivani || '';
+                    document.getElementById('favoriteMemory').value = biodata.relationship.favoriteMemory || '';
+                    document.getElementById('futurePlans').value = biodata.relationship.futurePlans || '';
+                }
+
+                // Load fun facts
+                if (biodata.funFacts) {
+                    document.getElementById('funFacts').value = biodata.funFacts.join('\n');
+                }
+
+                // Load quotes
+                if (biodata.quotes) {
+                    document.getElementById('favoriteQuote').value = biodata.quotes.favoriteQuote || '';
+                    document.getElementById('lifeMotto').value = biodata.quotes.lifeMotto || '';
+                    document.getElementById('relationshipQuote').value = biodata.quotes.relationshipQuote || '';
+                }
+
+                alert('Biodata loaded successfully! 📂');
+            } else {
+                alert('No saved biodata found. Please fill out the form and save it first.');
+            }
+        }
+
+        function setupImageUploads() {
+            const imageInputs = document.querySelectorAll('.image-input');
+            imageInputs.forEach(input => {
+                input.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const uploadArea = input.closest('.image-upload-area');
+                            const placeholder = uploadArea.querySelector('.upload-placeholder');
+                            const uploadedImage = uploadArea.querySelector('.uploaded-image');
+                            
+                            placeholder.style.display = 'none';
+                            uploadedImage.src = e.target.result;
+                            uploadedImage.style.display = 'block';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            });
+        }
+
+        // Simple next button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const nextBtn = document.getElementById('next-dialog-btn');
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    // For now, just show an alert or change the text
+                    const dialogText = document.getElementById('dialog-text');
+                    if (dialogText) {
+                        dialogText.textContent = "Your message was so sweet and genuine. I knew I had to reply...";
+                    }
+                    console.log('Next button clicked!');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

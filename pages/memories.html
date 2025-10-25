@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories - Cavin & Shivani 💕</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .memories-container {
+            min-height: 100vh;
+            background: 
+                radial-gradient(ellipse at top, rgba(26, 10, 26, 0.9) 0%, rgba(10, 10, 10, 0.8) 50%, rgba(0, 0, 0, 1) 100%),
+                radial-gradient(circle at 20% 50%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .memories-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .memories-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 72px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        }
+
+        .memories-subtitle {
+            font-size: 24px;
+            color: rgba(255, 182, 193, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 20, 147, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff69b4;
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 0.3);
+        }
+
+        .memory-date {
+            font-size: 18px;
+            color: #ffb6c1;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .memory-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            color: #ff69b4;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        }
+
+        .memory-description {
+            font-size: 16px;
+            color: rgba(255, 182, 193, 0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .memory-photo {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card:hover .memory-photo {
+            transform: scale(1.05);
+        }
+
+        .memory-icon {
+            font-size: 40px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 15px 30px;
+            background: rgba(255, 20, 147, 0.2);
+            color: #ffb6c1;
+            border: 2px solid rgba(255, 20, 147, 0.5);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 20, 147, 0.4);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-hearts::before,
+        .floating-hearts::after {
+            content: '💗';
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.3;
+            animation: floatHeart 8s ease-in-out infinite;
+        }
+
+        .floating-hearts::before {
+            left: 10%;
+            animation-delay: -2s;
+        }
+
+        .floating-hearts::after {
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts"></div>
+    
+    <a href="../index.html" class="back-btn">← Back to Home</a>
+    
+    <div class="memories-container">
+        <div class="memories-header">
+            <h1 class="memories-title">Our Beautiful Memories</h1>
+            <p class="memories-subtitle">Every moment with you is a treasure 💕</p>
+        </div>
+        
+        <div class="memories-grid">
+            <!-- Memory 1: First Message -->
+            <div class="memory-card">
+                <div class="memory-date">February 17, 2024</div>
+                <div class="memory-icon">💌</div>
+                <h3 class="memory-title">The First Message</h3>
+                <p class="memory-description">The day our story began. That first message that changed everything and brought us together.</p>
+                <img src="../images/main-photo.jpg" alt="Our first photo together" class="memory-photo">
+            </div>
+            
+            <!-- Memory 2: First Date -->
+            <div class="memory-card">
+                <div class="memory-date">March 25, 2024</div>
+                <div class="memory-icon">💕</div>
+                <h3 class="memory-title">Our First Date</h3>
+                <p class="memory-description">The magical day we met in person. Everything felt perfect from the moment I saw you.</p>
+                <img src="../images/main-photo.jpg" alt="Our first date" class="memory-photo">
+            </div>
+            
+            <!-- Memory 3: First I Love You -->
+            <div class="memory-card">
+                <div class="memory-date">June 2024</div>
+                <div class="memory-icon">💖</div>
+                <h3 class="memory-title">First "I Love You"</h3>
+                <p class="memory-description">The moment we both said those three magical words. Everything became real that day.</p>
+                <img src="../images/main-photo.jpg" alt="I love you moment" class="memory-photo">
+            </div>
+            
+            <!-- Memory 4: Sunset Dreams -->
+            <div class="memory-card">
+                <div class="memory-date">April 2024</div>
+                <div class="memory-icon">🌅</div>
+                <h3 class="memory-title">Sunset Dreams</h3>
+                <p class="memory-description">Sharing beautiful sunsets and dreaming of our future together. Every sunset reminds me of you.</p>
+                <img src="../images/main-photo.jpg" alt="Sunset together" class="memory-photo">
+            </div>
+            
+            <!-- Memory 5: Growing Together -->
+            <div class="memory-card">
+                <div class="memory-date">July 2024</div>
+                <div class="memory-icon">🌱</div>
+                <h3 class="memory-title">Growing Together</h3>
+                <p class="memory-description">Four months of beautiful growth, learning about each other, and building our love stronger every day.</p>
+                <img src="../images/main-photo.jpg" alt="Growing together" class="memory-photo">
+            </div>
+            
+            <!-- Memory 6: Forever Begins -->
+            <div class="memory-card">
+                <div class="memory-date">August 2024</div>
+                <div class="memory-icon">💍</div>
+                <h3 class="memory-title">Forever Begins</h3>
+                <p class="memory-description">Five months of pure love and knowing that this is just the beginning of our forever together.</p>
+                <img src="../images/main-photo.jpg" alt="Forever begins" class="memory-photo">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

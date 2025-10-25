@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavin & Shivani: Our Love Story 💕</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Intro Screen -->
+        <div id="intro-screen" class="screen">
+            <div class="hero-container">
+                <!-- Floating Hearts Background -->
+                <div class="floating-hearts"></div>
+                
+                <!-- Background Decorations -->
+                <div class="bg-decoration bg-star-1">⭐</div>
+                <div class="bg-decoration bg-star-2">✨</div>
+                <div class="bg-decoration bg-star-3">🌟</div>
+                <div class="bg-decoration bg-heart-1">💖</div>
+                <div class="bg-decoration bg-heart-2">💕</div>
+                <div class="bg-decoration bg-heart-3">💗</div>
+                <div class="bg-decoration bg-flower-1">🌹</div>
+                <div class="bg-decoration bg-flower-2">🌺</div>
+                
+                <!-- Main Photo Display -->
+                <div class="hero-photo-container">
+                    <div class="photo-frame">
+                        <img src="images/main-photo.jpg" alt="Cavin & Shivani" class="hero-photo">
+                        <div class="photo-shine"></div>
+                    </div>
+                </div>
+                
+                <!-- Photo Collage Display -->
+                <div class="hero-photo-container" style="margin-top: 40px;">
+                    <div class="photo-collage">
+                        <div class="collage-item collage-small">
+                            <img src="images/photo1.jpg" alt="Photo 1">
+                            <div class="photo-shine"></div>
+                        </div>
+                        <div class="collage-item collage-small">
+                            <img src="images/photo2.jpg" alt="Photo 2">
+                            <div class="photo-shine"></div>
+                        </div>
+                        <div class="collage-item collage-small">
+                            <img src="images/photo3.jpg" alt="Photo 3">
+                            <div class="photo-shine"></div>
+                        </div>
+                        <div class="collage-item collage-small">
+                            <img src="images/photo4.jpg" alt="Photo 4">
+                            <div class="photo-shine"></div>
+                        </div>
+                        <div class="collage-item collage-small">
+                            <img src="images/photo5.jpg" alt="Photo 5">
+                            <div class="photo-shine"></div>
+                        </div>
+                        <div class="collage-item collage-small">
+                            <img src="images/photo6.png" alt="Photo 6">
+                            <div class="photo-shine"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Content Overlay - Stays visible -->
+                <div class="hero-content sticky-content">
+                    <div class="content-wrapper">
+                        <div class="heart-icon-large">💕</div>
+                        <h1 class="hero-title">
+                            <span class="title-line">Our Love</span>
+                            <span class="title-subscript">Story</span>
+                        </h1>
+                        <div class="hero-divider">
+                            <span class="divider-heart">❤️</span>
+                            <span class="divider-line"></span>
+                            <span class="divider-heart">❤️</span>
+                        </div>
+                        <h2 class="hero-names">Cavin & Shivani</h2>
+                        <p class="hero-subtitle">A Beautiful Journey Together</p>
+                        
+                        <button id="explore-love-btn" class="hero-btn">
+                            <span class="btn-text">Explore Our Love</span>
+                            <span class="btn-arrow">💕</span>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="scroll-effect.js"></script>
+    <script>
+        // Navigate to character showcase when "Explore Our Love" is clicked
+        document.getElementById('explore-love-btn').addEventListener('click', function() {
+            window.location.href = 'pages/character-selection.html';
+        });
+
+        // Random floating animation for the 5 photos
+        document.addEventListener('DOMContentLoaded', function() {
+            const collageItems = document.querySelectorAll('.collage-item');
+            
+            // Add random movement variations
+            collageItems.forEach((item, index) => {
+                // Add some randomness to the animation timing
+                const randomDelay = Math.random() * 2;
+                const randomDuration = 8 + Math.random() * 6; // 8-14 seconds
+                
+                item.style.animationDelay = `${randomDelay}s`;
+                item.style.animationDuration = `${randomDuration}s`;
+                
+                // Add mouse interaction for extra cuteness
+                item.addEventListener('mouseenter', function() {
+                    this.style.animationPlayState = 'paused';
+                    this.style.transform = 'scale(1.30) translateY(-25px) rotate(15deg)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.animationPlayState = 'running';
+                    this.style.transform = '';
+                });
+                
+                // Add click interaction for extra fun
+                item.addEventListener('click', function() {
+                    this.style.animation = 'none';
+                    this.style.transform = 'scale(1.45) rotate(25deg)';
+                    
+                    setTimeout(() => {
+                        this.style.animation = '';
+                        this.style.transform = '';
+                    }, 300);
+                });
+            });
+            
+            // Add some sparkle effects when photos are clicked
+            function createSparkle(x, y) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = x + 'px';
+                sparkle.style.top = y + 'px';
+                sparkle.style.fontSize = '20px';
+                sparkle.style.color = '#ff69b4';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '1000';
+                sparkle.textContent = '✨';
+                sparkle.style.animation = 'sparkleEffect 1s ease-out forwards';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 1000);
+            }
+            
+            // Add sparkle effect to CSS
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes sparkleEffect {
+                    0% {
+                        opacity: 1;
+                        transform: scale(0.5) rotate(0deg);
+                    }
+                    50% {
+                        opacity: 1;
+                        transform: scale(1.2) rotate(180deg);
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: scale(0.8) rotate(360deg);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Add click sparkles to all collage items
+            collageItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = rect.left + rect.width / 2;
+                    const y = rect.top + rect.height / 2;
+                    
+                    // Create multiple sparkles
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => {
+                            createSparkle(
+                                x + (Math.random() - 0.5) * 100,
+                                y + (Math.random() - 0.5) * 100
+                            );
+                        }, i * 100);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

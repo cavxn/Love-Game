@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Timeline - Cavin & Shivani 💕</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .timeline-container {
+            min-height: 100vh;
+            background: 
+                radial-gradient(ellipse at top, rgba(26, 10, 26, 0.9) 0%, rgba(10, 10, 10, 0.8) 50%, rgba(0, 0, 0, 1) 100%),
+                radial-gradient(circle at 20% 50%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255, 105, 180, 0.1) 0%, transparent 50%);
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .timeline-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 72px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
+        }
+
+        .timeline-subtitle {
+            font-size: 24px;
+            color: rgba(255, 182, 193, 0.8);
+            margin-bottom: 40px;
+        }
+
+        .timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff1493, #ff69b4, #ffb6c1);
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(even) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 20, 147, 0.3);
+            border-radius: 25px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            width: 45%;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            border-color: #ff69b4;
+            box-shadow: 0 20px 60px rgba(255, 20, 147, 0.3);
+        }
+
+        .timeline-date {
+            font-size: 18px;
+            color: #ffb6c1;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .timeline-title-item {
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
+            color: #ff69b4;
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+        }
+
+        .timeline-description {
+            font-size: 16px;
+            color: rgba(255, 182, 193, 0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 0 30px rgba(255, 20, 147, 0.5);
+            z-index: 2;
+        }
+
+        .timeline-photo {
+            width: 100%;
+            height: 800px;
+            object-fit: contain;
+            border-radius: 15px;
+            margin-top: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover .timeline-photo {
+            transform: scale(1.05);
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            padding: 15px 30px;
+            background: rgba(255, 20, 147, 0.2);
+            color: #ffb6c1;
+            border: 2px solid rgba(255, 20, 147, 0.5);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 20, 147, 0.4);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-hearts::before,
+        .floating-hearts::after {
+            content: '💗';
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.3;
+            animation: floatHeart 8s ease-in-out infinite;
+        }
+
+        .floating-hearts::before {
+            left: 10%;
+            animation-delay: -2s;
+        }
+
+        .floating-hearts::after {
+            right: 10%;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts"></div>
+    
+    <a href="../index.html" class="back-btn">← Back to Home</a>
+    
+    <div class="timeline-container">
+        <div class="timeline-header">
+            <h1 class="timeline-title">Our Love Timeline</h1>
+            <p class="timeline-subtitle">Every moment that brought us closer together 💕</p>
+        </div>
+        
+        <div class="timeline">
+            <!-- February 17, 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">💌</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">February 17, 2024</div>
+                    <h3 class="timeline-title-item">The First Message</h3>
+                    <p class="timeline-description">The day our story began. That first message that changed everything and brought us together. I remember being so nervous typing that first message, but something about your profile just captivated me.</p>
+                    <img src="../images/first-timeline.png" alt="First message" class="timeline-photo">
+                </div>
+            </div>
+            
+            <!-- First Photo After Proposing -->
+            <div class="timeline-item">
+                <div class="timeline-icon">📸</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">March 26, 2024</div>
+                    <h3 class="timeline-title-item">Our First Photo Together After Proposing</h3>
+                    <p class="timeline-description">Our first picture together after we decided we liked each other! We sat at Clock Court until 7:30 PM, just talking and laughing. That moment was so incredibly cute - just the two of us, sharing stories and getting to know each other better. I remember feeling butterflies the whole time, and wishing the night would never end. This photo captures the beginning of something beautiful and special.</p>
+                    <img src="../images/second-timeline.png" alt="First photo together" class="timeline-photo">
+                </div>
+            </div>
+            
+            <!-- March 25, 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">💕</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">March 25, 2024</div>
+                    <h3 class="timeline-title-item">Our First Date</h3>
+                    <p class="timeline-description">The magical day we met in person. I was so nervous, but the moment I saw you, everything felt right. We talked for hours and I knew this was the beginning of something beautiful.</p>
+                    <img src="../images/main-photo.jpg" alt="First date" class="timeline-photo">
+                </div>
+            </div>
+            
+            <!-- April 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">🌅</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">April 2024</div>
+                    <h3 class="timeline-title-item">Sunset Dreams</h3>
+                    <p class="timeline-description">I started sending you sunset pictures every day because I wanted to share every beautiful moment with you. Every sunset I see reminds me of your beauty, your warmth, your light in my life.</p>
+                    <img src="../images/main-photo.jpg" alt="Sunset dreams" class="timeline-photo">
+                </div>
+            </div>
+            
+            <!-- May 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">😄</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">May 2024</div>
+                    <h3 class="timeline-title-item">Making You Laugh</h3>
+                    <p class="timeline-description">Your laugh became the most beautiful sound in my world. I found myself doing anything just to hear it. That moment when you laughed at my joke... I knew I wanted to make you laugh every day for the rest of my life.</p>
+                    <img src="../images/main-photo.jpg" alt="Making you laugh" class="timeline-photo">
+                </div>
+            </div>
+            
+            <!-- June 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">💖</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">June 2024</div>
+                    <h3 class="timeline-title-item">First "I Love You"</h3>
+                    <p class="timeline-description">The moment we both said 'I love you'... everything became real. I had been wanting to say it for weeks, and when you said it back, I knew this was forever.</p>
+                    <img src="../images/main-photo.jpg" alt="I love you" class="timeline-photo">
+                </div>
+            </div>
+            
+            <!-- July 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">🌱</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">July 2024</div>
+                    <h3 class="timeline-title-item">Growing Together</h3>
+                    <p class="timeline-description">Four months into our relationship, and I can't imagine my life without you. We've grown so much together. Every challenge, every joy, every moment... we've faced it all as one.</p>
+                    <img src="../images/main-photo.jpg" alt="Growing together" class="timeline-photo">
+                </div>
+            </div>
+            
+            <!-- August 2024 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">💍</div>
+                <div class="timeline-content">
+                    <div class="timeline-date">August 2024</div>
+                    <h3 class="timeline-title-item">Forever Begins</h3>
+                    <p class="timeline-description">Five months of pure love. Five months of you being the light in my life. Five months of knowing you're my forever. This is just the beginning of our forever together.</p>
+                    <img src="../images/main-photo.jpg" alt="Forever begins" class="timeline-photo">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

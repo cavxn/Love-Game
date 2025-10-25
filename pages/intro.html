@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavin & Shivani: Our Love Chapter 💫</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Intro Screen -->
+        <div id="intro-screen" class="screen">
+            <div class="hero-container">
+                <!-- Floating Hearts Background -->
+                <div class="floating-hearts"></div>
+                
+                <!-- Background Decorations -->
+                <div class="bg-decoration bg-star-1">⭐</div>
+                <div class="bg-decoration bg-star-2">✨</div>
+                <div class="bg-decoration bg-star-3">🌟</div>
+                <div class="bg-decoration bg-heart-1">💖</div>
+                <div class="bg-decoration bg-heart-2">💕</div>
+                <div class="bg-decoration bg-heart-3">💗</div>
+                <div class="bg-decoration bg-flower-1">🌹</div>
+                <div class="bg-decoration bg-flower-2">🌺</div>
+                
+                <!-- Main Photo Display -->
+                <div class="hero-photo-container">
+                    <div class="photo-frame">
+                        <img src="../images/main-photo.jpg" alt="Cavin & Shivani" class="hero-photo">
+                        <div class="photo-shine"></div>
+                    </div>
+                </div>
+                
+                <!-- Content Overlay - Stays visible -->
+                <div class="hero-content sticky-content">
+                    <div class="content-wrapper">
+                        <div class="heart-icon-large">💕</div>
+                        <h1 class="hero-title">
+                            <span class="title-line">Our Love</span>
+                            <span class="title-subscript">Story</span>
+                        </h1>
+                        <div class="hero-divider">
+                            <span class="divider-heart">❤️</span>
+                            <span class="divider-line"></span>
+                            <span class="divider-heart">❤️</span>
+                        </div>
+                        <h2 class="hero-names">Cavin & Shivani</h2>
+                        <p class="hero-subtitle">A Beautiful 7-Month Journey Together</p>
+                        
+                        <button id="start-intro-btn" class="hero-btn">
+                            <span class="btn-text">Begin Our Story</span>
+                            <span class="btn-arrow">➤</span>
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="../scroll-effect.js"></script>
+    <script>
+        // Navigate to character selection page when button is clicked
+        document.getElementById('start-intro-btn').addEventListener('click', function() {
+            window.location.href = 'character-selection.html';
+        });
+    </script>
+</body>
+</html>
